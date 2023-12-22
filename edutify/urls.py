@@ -21,8 +21,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from authy.views import UserProfile
+from classroom.views import index
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('authy.urls')),
+    path('course/', include('classroom.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('<username>', UserProfile, name='profile'),
+    path('', index, name='index')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
