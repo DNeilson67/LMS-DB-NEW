@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2023 at 09:08 AM
+-- Generation Time: Dec 22, 2023 at 06:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,7 +44,8 @@ CREATE TABLE `authy_profile` (
 
 INSERT INTO `authy_profile` (`id`, `location`, `url`, `profile_info`, `created`, `picture`, `banner`, `user_id`) VALUES
 (1, NULL, NULL, NULL, '2023-12-22', '', '', 1),
-(2, NULL, NULL, NULL, '2023-12-22', '', '', 2);
+(2, NULL, NULL, NULL, '2023-12-22', '', '', 2),
+(3, '', '', '', '2023-12-22', 'user_3/profile.jpg', '', 3);
 
 -- --------------------------------------------------------
 
@@ -114,7 +115,15 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (25, 'Can add profile', 7, 'add_profile'),
 (26, 'Can change profile', 7, 'change_profile'),
 (27, 'Can delete profile', 7, 'delete_profile'),
-(28, 'Can view profile', 7, 'view_profile');
+(28, 'Can view profile', 7, 'view_profile'),
+(29, 'Can add course', 8, 'add_course'),
+(30, 'Can change course', 8, 'change_course'),
+(31, 'Can delete course', 8, 'delete_course'),
+(32, 'Can view course', 8, 'view_course'),
+(33, 'Can add category', 9, 'add_category'),
+(34, 'Can change category', 9, 'change_category'),
+(35, 'Can delete category', 9, 'delete_category'),
+(36, 'Can view category', 9, 'view_category');
 
 -- --------------------------------------------------------
 
@@ -141,8 +150,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$600000$F7jKCdr3O7uq3gn9cuzUjd$/1ZyM6SgbNOxBLxfVEkZRvzmycPKRCN6R/MR2O2ZlrM=', '2023-12-22 08:06:15.753792', 1, 'michail', '', '', 'mbl@gmail.com', 1, 1, '2023-12-22 08:03:54.388189'),
-(2, 'pbkdf2_sha256$600000$LGJ0wENHvitP6LSFhy0M60$WGQshlGy2YJQwPY7rSaNKH/5hSN5deKvbabcdWvn60c=', NULL, 0, 'mb', '', '', 'mb@gmail.com', 0, 1, '2023-12-22 08:04:35.167878');
+(1, 'pbkdf2_sha256$600000$F7jKCdr3O7uq3gn9cuzUjd$/1ZyM6SgbNOxBLxfVEkZRvzmycPKRCN6R/MR2O2ZlrM=', '2023-12-22 17:07:31.521156', 1, 'michail', '', '', 'mbl@gmail.com', 1, 1, '2023-12-22 08:03:54.388189'),
+(2, 'pbkdf2_sha256$600000$LGJ0wENHvitP6LSFhy0M60$WGQshlGy2YJQwPY7rSaNKH/5hSN5deKvbabcdWvn60c=', '2023-12-22 17:01:35.506059', 0, 'mb', '', '', 'mb@gmail.com', 0, 1, '2023-12-22 08:04:35.167878'),
+(3, 'pbkdf2_sha256$600000$sbS76R9tIwfs4xNZwxFGLn$xB8RmgeeII8AKtgdIXY6UHIx1yDTuGL354sZyPnrP2I=', '2023-12-22 17:10:40.741445', 0, 'dabin', 'dabin', 'nelbon', 'dabin@gmail.com', 0, 1, '2023-12-22 16:57:30.393948');
 
 -- --------------------------------------------------------
 
@@ -171,6 +181,74 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `classroom_category`
+--
+
+CREATE TABLE `classroom_category` (
+  `id` bigint(20) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `icon` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `classroom_category`
+--
+
+INSERT INTO `classroom_category` (`id`, `title`, `slug`, `icon`) VALUES
+(1, 'Science', 'science', 'science'),
+(2, 'Software', 'software', 'bug_report'),
+(3, 'Botanic', 'botanic', 'grass'),
+(4, 'Human', 'human', 'articles'),
+(5, 'Law', 'law', 'gavel');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classroom_course`
+--
+
+CREATE TABLE `classroom_course` (
+  `id` char(32) NOT NULL,
+  `picture` varchar(100) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `syllabus` longtext NOT NULL,
+  `category_id` bigint(20) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `classroom_course`
+--
+
+INSERT INTO `classroom_course` (`id`, `picture`, `title`, `description`, `syllabus`, `category_id`, `user_id`) VALUES
+('31e32824cca241409ef55d246f422d9e', 'user_1/file.png', 'Software Engineering', 'Learn software engineering', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed augue a quam viverra condimentum in ac libero. Nullam imperdiet scelerisque fermentum. Donec a sapien at risus tempus molestie at in orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi posuere ex ac elit rutrum porta. Nullam ut convallis tortor, in lacinia felis. Proin sodales nibh eu venenatis fermentum. Nam sit amet odio placerat, commodo dui quis, fermentum velit. Praesent vitae mauris nec arcu consectetur egestas. Fusce id orci vitae arcu rutrum pellentesque.</p>', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classroom_course_enrolled`
+--
+
+CREATE TABLE `classroom_course_enrolled` (
+  `id` bigint(20) NOT NULL,
+  `course_id` char(32) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `classroom_course_enrolled`
+--
+
+INSERT INTO `classroom_course_enrolled` (`id`, `course_id`, `user_id`) VALUES
+(1, '31e32824cca241409ef55d246f422d9e', 1),
+(5, '31e32824cca241409ef55d246f422d9e', 2),
+(3, '31e32824cca241409ef55d246f422d9e', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `django_admin_log`
 --
 
@@ -184,6 +262,21 @@ CREATE TABLE `django_admin_log` (
   `content_type_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+(1, '2023-12-22 08:56:59.641311', '1', 'Science', 1, '[{\"added\": {}}]', 9, 1),
+(2, '2023-12-22 08:57:07.478511', '2', 'Software', 1, '[{\"added\": {}}]', 9, 1),
+(3, '2023-12-22 08:57:13.399279', '3', 'Botanic', 1, '[{\"added\": {}}]', 9, 1),
+(4, '2023-12-22 08:57:25.767867', '4', 'Human', 1, '[{\"added\": {}}]', 9, 1),
+(5, '2023-12-22 09:00:43.162532', '5', 'Law', 1, '[{\"added\": {}}]', 9, 1),
+(6, '2023-12-22 09:00:51.167885', '2', 'Software', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1),
+(7, '2023-12-22 09:01:39.064799', '1', 'Science', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1),
+(8, '2023-12-22 09:02:02.367574', '3', 'Botanic', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1),
+(9, '2023-12-22 16:12:38.637411', '3', 'Botanic', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -207,6 +300,8 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (2, 'auth', 'permission'),
 (4, 'auth', 'user'),
 (7, 'authy', 'profile'),
+(9, 'classroom', 'category'),
+(8, 'classroom', 'course'),
 (5, 'contenttypes', 'contenttype'),
 (6, 'sessions', 'session');
 
@@ -246,7 +341,12 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (16, 'auth', '0011_update_proxy_permissions', '2023-12-22 07:52:52.691519'),
 (17, 'auth', '0012_alter_user_first_name_max_length', '2023-12-22 07:52:52.754858'),
 (18, 'sessions', '0001_initial', '2023-12-22 07:52:53.000997'),
-(19, 'authy', '0001_initial', '2023-12-22 08:01:15.672601');
+(19, 'authy', '0001_initial', '2023-12-22 08:01:15.672601'),
+(20, 'classroom', '0001_initial', '2023-12-22 08:47:05.287387'),
+(21, 'classroom', '0002_category_icon', '2023-12-22 08:59:14.339946'),
+(22, 'classroom', '0003_course_enrolled', '2023-12-22 09:10:51.332018'),
+(23, 'classroom', '0004_rename_category_course_category', '2023-12-22 09:42:10.891800'),
+(24, 'classroom', '0005_alter_course_enrolled_alter_course_user', '2023-12-22 09:58:56.511603');
 
 -- --------------------------------------------------------
 
@@ -265,7 +365,8 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('z2iyusdxsj20xplfmixugi1gbg1ahcbh', '.eJxVjDsOwjAQBe_iGlkbf7OU9JzB8nptHECOFCcV4u4QKQW0b2beS4S4rTVsPS9hYnEWgzj9bhTTI7cd8D222yzT3NZlIrkr8qBdXmfOz8vh_h3U2Ou3tpbKiJyVZlLKMg6kXQRflI4JM2gDNKJmD94jZVDoyKDxqUBxCkC8P9vtN0M:1rGaXv:28NhrzZet-vJwtpiqwXzpESv5e9fbepQn15Vd6hFem4', '2024-01-05 08:06:15.811000');
+('ce98klytdyciv7pyqs37qims1tt0o540', '.eJxVjMsOwiAQAP-FsyEsizw8evcbyLJQqRqalPZk_HdD0oNeZybzFpH2rca9lzXOWVyEFqdfloifpQ2RH9Tui-Slbeuc5EjkYbu8Lbm8rkf7N6jU69hqlUrQxeaECOg9cwI0igNko9mdlQuOvAECp5IPE5SJDVq0li2QFp8vyF03BA:1rGeIg:ea58GrT9Eiv0byuhpWYk8R-4zJjtSXs35iYCSoLrCkA', '2024-01-05 12:06:46.454183'),
+('yy19djk5gklmgfmvqlyarsuj5r32hs7r', '.eJxVjDsOwjAQBe_iGlkO_lPS5wyWd72LA8iR4qRC3B0ipYD2zcx7iZS3taat05KmIi5Ci9PvBhkf1HZQ7rndZolzW5cJ5K7Ig3Y5zoWe18P9O6i5129tdCZ9ts6UECyqGCMyMmkGUhnBc4jEgDYYpR3YwbLnYjQN3hcyDsT7A_yyOLA:1rGj2m:E2AZKHiYMSDUnodkSjesD_G5V_643y5J5d2FzuCfSlc', '2024-01-05 17:10:40.844412');
 
 --
 -- Indexes for dumped tables
@@ -324,6 +425,29 @@ ALTER TABLE `auth_user_user_permissions`
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
 
 --
+-- Indexes for table `classroom_category`
+--
+ALTER TABLE `classroom_category`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `slug` (`slug`);
+
+--
+-- Indexes for table `classroom_course`
+--
+ALTER TABLE `classroom_course`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `classroom_course_user_id_a05d9798_fk_auth_user_id` (`user_id`),
+  ADD KEY `classroom_course_category_id_50e7f834_fk_classroom_category_id` (`category_id`);
+
+--
+-- Indexes for table `classroom_course_enrolled`
+--
+ALTER TABLE `classroom_course_enrolled`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `classroom_course_enrolled_course_id_user_id_aa8a3b9b_uniq` (`course_id`,`user_id`),
+  ADD KEY `classroom_course_enrolled_user_id_c8e0f9a2_fk_auth_user_id` (`user_id`);
+
+--
 -- Indexes for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
@@ -359,7 +483,7 @@ ALTER TABLE `django_session`
 -- AUTO_INCREMENT for table `authy_profile`
 --
 ALTER TABLE `authy_profile`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `auth_group`
@@ -377,13 +501,13 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
@@ -398,22 +522,34 @@ ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `classroom_category`
+--
+ALTER TABLE `classroom_category`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `classroom_course_enrolled`
+--
+ALTER TABLE `classroom_course_enrolled`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -451,6 +587,20 @@ ALTER TABLE `auth_user_groups`
 ALTER TABLE `auth_user_user_permissions`
   ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `classroom_course`
+--
+ALTER TABLE `classroom_course`
+  ADD CONSTRAINT `classroom_course_category_id_50e7f834_fk_classroom_category_id` FOREIGN KEY (`category_id`) REFERENCES `classroom_category` (`id`),
+  ADD CONSTRAINT `classroom_course_user_id_a05d9798_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `classroom_course_enrolled`
+--
+ALTER TABLE `classroom_course_enrolled`
+  ADD CONSTRAINT `classroom_course_enr_course_id_4a0d5d7c_fk_classroom` FOREIGN KEY (`course_id`) REFERENCES `classroom_course` (`id`),
+  ADD CONSTRAINT `classroom_course_enrolled_user_id_c8e0f9a2_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
 -- Constraints for table `django_admin_log`
