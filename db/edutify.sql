@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2023 at 06:12 PM
+-- Generation Time: Dec 23, 2023 at 05:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -123,7 +123,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (33, 'Can add category', 9, 'add_category'),
 (34, 'Can change category', 9, 'change_category'),
 (35, 'Can delete category', 9, 'delete_category'),
-(36, 'Can view category', 9, 'view_category');
+(36, 'Can view category', 9, 'view_category'),
+(37, 'Can add module', 10, 'add_module'),
+(38, 'Can change module', 10, 'change_module'),
+(39, 'Can delete module', 10, 'delete_module'),
+(40, 'Can view module', 10, 'view_module');
 
 -- --------------------------------------------------------
 
@@ -150,8 +154,8 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$600000$F7jKCdr3O7uq3gn9cuzUjd$/1ZyM6SgbNOxBLxfVEkZRvzmycPKRCN6R/MR2O2ZlrM=', '2023-12-22 17:07:31.521156', 1, 'michail', '', '', 'mbl@gmail.com', 1, 1, '2023-12-22 08:03:54.388189'),
-(2, 'pbkdf2_sha256$600000$LGJ0wENHvitP6LSFhy0M60$WGQshlGy2YJQwPY7rSaNKH/5hSN5deKvbabcdWvn60c=', '2023-12-22 17:01:35.506059', 0, 'mb', '', '', 'mb@gmail.com', 0, 1, '2023-12-22 08:04:35.167878'),
+(1, 'pbkdf2_sha256$600000$F7jKCdr3O7uq3gn9cuzUjd$/1ZyM6SgbNOxBLxfVEkZRvzmycPKRCN6R/MR2O2ZlrM=', '2023-12-23 04:08:29.463225', 1, 'michail', '', '', 'mbl@gmail.com', 1, 1, '2023-12-22 08:03:54.388189'),
+(2, 'pbkdf2_sha256$600000$LGJ0wENHvitP6LSFhy0M60$WGQshlGy2YJQwPY7rSaNKH/5hSN5deKvbabcdWvn60c=', '2023-12-23 04:07:10.066357', 0, 'mb', '', '', 'mb@gmail.com', 0, 1, '2023-12-22 08:04:35.167878'),
 (3, 'pbkdf2_sha256$600000$sbS76R9tIwfs4xNZwxFGLn$xB8RmgeeII8AKtgdIXY6UHIx1yDTuGL354sZyPnrP2I=', '2023-12-22 17:10:40.741445', 0, 'dabin', 'dabin', 'nelbon', 'dabin@gmail.com', 0, 1, '2023-12-22 16:57:30.393948');
 
 -- --------------------------------------------------------
@@ -249,6 +253,25 @@ INSERT INTO `classroom_course_enrolled` (`id`, `course_id`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `classroom_course_modules`
+--
+
+CREATE TABLE `classroom_course_modules` (
+  `id` bigint(20) NOT NULL,
+  `course_id` char(32) NOT NULL,
+  `module_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `classroom_course_modules`
+--
+
+INSERT INTO `classroom_course_modules` (`id`, `course_id`, `module_id`) VALUES
+(1, '31e32824cca241409ef55d246f422d9e', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `django_admin_log`
 --
 
@@ -303,6 +326,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (9, 'classroom', 'category'),
 (8, 'classroom', 'course'),
 (5, 'contenttypes', 'contenttype'),
+(10, 'module', 'module'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -346,7 +370,10 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (21, 'classroom', '0002_category_icon', '2023-12-22 08:59:14.339946'),
 (22, 'classroom', '0003_course_enrolled', '2023-12-22 09:10:51.332018'),
 (23, 'classroom', '0004_rename_category_course_category', '2023-12-22 09:42:10.891800'),
-(24, 'classroom', '0005_alter_course_enrolled_alter_course_user', '2023-12-22 09:58:56.511603');
+(24, 'classroom', '0005_alter_course_enrolled_alter_course_user', '2023-12-22 09:58:56.511603'),
+(25, 'module', '0001_initial', '2023-12-23 03:47:11.183676'),
+(26, 'classroom', '0002_course_modules', '2023-12-23 03:47:12.506590'),
+(27, 'module', '0002_rename_hour_module_hours', '2023-12-23 04:12:42.512555');
 
 -- --------------------------------------------------------
 
@@ -365,8 +392,28 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('ce98klytdyciv7pyqs37qims1tt0o540', '.eJxVjMsOwiAQAP-FsyEsizw8evcbyLJQqRqalPZk_HdD0oNeZybzFpH2rca9lzXOWVyEFqdfloifpQ2RH9Tui-Slbeuc5EjkYbu8Lbm8rkf7N6jU69hqlUrQxeaECOg9cwI0igNko9mdlQuOvAECp5IPE5SJDVq0li2QFp8vyF03BA:1rGeIg:ea58GrT9Eiv0byuhpWYk8R-4zJjtSXs35iYCSoLrCkA', '2024-01-05 12:06:46.454183'),
-('yy19djk5gklmgfmvqlyarsuj5r32hs7r', '.eJxVjDsOwjAQBe_iGlkO_lPS5wyWd72LA8iR4qRC3B0ipYD2zcx7iZS3taat05KmIi5Ci9PvBhkf1HZQ7rndZolzW5cJ5K7Ig3Y5zoWe18P9O6i5129tdCZ9ts6UECyqGCMyMmkGUhnBc4jEgDYYpR3YwbLnYjQN3hcyDsT7A_yyOLA:1rGj2m:E2AZKHiYMSDUnodkSjesD_G5V_643y5J5d2FzuCfSlc', '2024-01-05 17:10:40.844412');
+('b3zbbu6ujh0z9tnk1n1wbula9bultgmd', '.eJxVjDsOwjAQBe_iGlkbf7OU9JzB8nptHECOFCcV4u4QKQW0b2beS4S4rTVsPS9hYnEWgzj9bhTTI7cd8D222yzT3NZlIrkr8qBdXmfOz8vh_h3U2Ou3tpbKiJyVZlLKMg6kXQRflI4JM2gDNKJmD94jZVDoyKDxqUBxCkC8P9vtN0M:1rGtJN:DfvdeMdv1opg4T6AjkBfUkO7ev5RJVdHGOeh9FLlj0s', '2024-01-06 04:08:29.499509'),
+('ce98klytdyciv7pyqs37qims1tt0o540', '.eJxVjMsOwiAQAP-FsyEsizw8evcbyLJQqRqalPZk_HdD0oNeZybzFpH2rca9lzXOWVyEFqdfloifpQ2RH9Tui-Slbeuc5EjkYbu8Lbm8rkf7N6jU69hqlUrQxeaECOg9cwI0igNko9mdlQuOvAECp5IPE5SJDVq0li2QFp8vyF03BA:1rGeIg:ea58GrT9Eiv0byuhpWYk8R-4zJjtSXs35iYCSoLrCkA', '2024-01-05 12:06:46.454183');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `module_module`
+--
+
+CREATE TABLE `module_module` (
+  `id` bigint(20) NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `hours` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL
+) ;
+
+--
+-- Dumping data for table `module_module`
+--
+
+INSERT INTO `module_module` (`id`, `title`, `hours`, `user_id`) VALUES
+(1, 'bimbimbambam', 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -448,6 +495,14 @@ ALTER TABLE `classroom_course_enrolled`
   ADD KEY `classroom_course_enrolled_user_id_c8e0f9a2_fk_auth_user_id` (`user_id`);
 
 --
+-- Indexes for table `classroom_course_modules`
+--
+ALTER TABLE `classroom_course_modules`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `classroom_course_modules_course_id_module_id_a9016b6a_uniq` (`course_id`,`module_id`),
+  ADD KEY `classroom_course_modules_module_id_0f5129ef_fk_module_module_id` (`module_id`);
+
+--
 -- Indexes for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
@@ -476,6 +531,13 @@ ALTER TABLE `django_session`
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
+-- Indexes for table `module_module`
+--
+ALTER TABLE `module_module`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `module_module_user_id_23441d86_fk_auth_user_id` (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -501,7 +563,7 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
@@ -531,7 +593,13 @@ ALTER TABLE `classroom_category`
 -- AUTO_INCREMENT for table `classroom_course_enrolled`
 --
 ALTER TABLE `classroom_course_enrolled`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `classroom_course_modules`
+--
+ALTER TABLE `classroom_course_modules`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
@@ -543,13 +611,19 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `module_module`
+--
+ALTER TABLE `module_module`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -603,11 +677,24 @@ ALTER TABLE `classroom_course_enrolled`
   ADD CONSTRAINT `classroom_course_enrolled_user_id_c8e0f9a2_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
+-- Constraints for table `classroom_course_modules`
+--
+ALTER TABLE `classroom_course_modules`
+  ADD CONSTRAINT `classroom_course_mod_course_id_28140d0c_fk_classroom` FOREIGN KEY (`course_id`) REFERENCES `classroom_course` (`id`),
+  ADD CONSTRAINT `classroom_course_modules_module_id_0f5129ef_fk_module_module_id` FOREIGN KEY (`module_id`) REFERENCES `module_module` (`id`);
+
+--
 -- Constraints for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `module_module`
+--
+ALTER TABLE `module_module`
+  ADD CONSTRAINT `module_module_user_id_23441d86_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

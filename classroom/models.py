@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 import uuid
 
 # Create your models here.
-
+from module.models import Module
 
 #3rd apps field
 from ckeditor.fields import RichTextField
@@ -35,6 +35,8 @@ class Course(models.Model):
     syllabus = RichTextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='course_owner')
     enrolled = models.ManyToManyField(User)
+    modules = models.ManyToManyField(Module)
+
 
 
     def __str__(self):
