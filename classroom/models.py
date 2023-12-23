@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 import uuid
+from assignment.models import *
 
 # Create your models here.
 from module.models import Module
@@ -9,6 +10,7 @@ from module.models import Module
 #3rd apps field
 from ckeditor.fields import RichTextField
 
+status_choices = (('pending', 'Pending'), ('graded', 'Graded'))
 
 def user_directory_path(instance, filename):
     #THIS file will be uploaded to MEDIA_ROOT /the user_(id)/the file
@@ -37,7 +39,12 @@ class Course(models.Model):
     enrolled = models.ManyToManyField(User)
     modules = models.ManyToManyField(Module)
 
-
-
     def __str__(self):
         return self.title
+    
+class Grade(models.Model):
+    course = models.ForeignKey(Course, on_delete = models.CASCADE)
+    submission = models.ForeignKey(Submission, on_delete = models.CASCADE)
+    points = models.PositiveIntegerField(default = 0)
+    graded_by = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True)
+    status = models.CharField(choices = status_choices, default = 'pending', max_length = 10, verbose_name = 'Status')
