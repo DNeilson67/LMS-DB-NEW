@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'classroom',
     'module',
     'page',
-    'assignment'
+    'assignment',
+    'question',
 ]
 
 MIDDLEWARE = [

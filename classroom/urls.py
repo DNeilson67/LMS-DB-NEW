@@ -4,6 +4,7 @@ from classroom.views import *
 
 from module.views import NewModule, CourseModule
 from page.views import *
+from question.views import *
 
 urlpatterns = [
     path('newcourse/', NewCourse, name='newcourse'),
@@ -28,4 +29,10 @@ urlpatterns = [
     path('<course_id>/submissions', Submissions, name = 'submissions'),
     path('<course_id>/studentsubmissions', StudentSubmissions, name = 'student-submissions'),
     path('<course_id>/submissions/<grade_id>/grade', GradeSubmissions, name = 'grade-submission'),
+    #Questions
+    path('<course_id>/questions', Questions, name='questions'),
+    path('<course_id>/questions/newquestion', NewStudentQuestion, name='new-student-question'),
+    path('<course_id>/questions/<question_id>', QuestionDetail, name='question-detail'),
+    path('<course_id>/questions/<question_id>/vote', VoteAnswer, name='vote-answer'),
+    path('<course_id>/questions/<question_id>/<answer_id>/markasanswer', MarkAsAnswer, name='mark-as-answer'),
 ]
