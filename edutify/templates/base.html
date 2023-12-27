@@ -49,18 +49,18 @@
       <a href="#email"><span class="white-text email">{{ nav_profile.user.email }}</span></a>
     </div>
   </li>
-    <li><a href="{% url 'profile' nav_profile.user.username %}"><i class="material-icons">person</i>My profile</a></li>
     <li><a href="{% url 'index' %}"><i class="material-icons">dashboard</i>Dashboard</a></li>
+    <li><a href="{% url 'profile' nav_profile.user.username %}"><i class="material-icons">person</i>My Grade</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Learning</a></li>
-    <li><a href="{% url 'categories' %}"><i class="material-icons">menu_book</i>Courses</a></li>
-    <li><a href=""><i class="material-icons">menu_book</i>Inbox</a></li>
-    <li><a href=""><i class="material-icons">circle_notifications</i>Notifications</a></li>    
+    <li><a href="{% url 'categories' %}"><i class="material-icons">menu_book</i>Enrolled Courses</a></li>
+    <li><a href="{% url 'categories' %}"><i class="material-icons">search</i>Browse Courses</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Teaching</a></li>
-    <li><a href="{% url 'my-courses' %}"><i class="material-icons">menu_book</i>Your courses</a></li>
+    <li><a href="{% url 'my-courses' %}"><i class="material-icons">school</i>Your courses</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="{% url 'logout' %}"><i class="material-icons">power_off</i>Log out</a></li>
+    <li><a href="{% url 'profile' nav_profile.user.username %}"><i class="material-icons">settings</i>Settings</a></li>
+    <li><a href="{% url 'logout' %}"><i class="material-icons">logout</i>Log out</a></li>
   </ul>
 
 

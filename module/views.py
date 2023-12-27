@@ -19,7 +19,7 @@ def NewModule(request, course_id):
             if form.is_valid():
                 title = form.cleaned_data.get('title')
                 hours = form.cleaned_data.get('hours')
-                m, created = Module.objects.create(title=title, hours=hours, user=user)
+                m = Module.objects.create(title=title, hours=hours, user=user)
                 course.modules.add(m)
                 course.save()
                 return redirect('modules', course_id=course_id)
