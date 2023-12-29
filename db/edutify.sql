@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Des 2023 pada 14.12
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Dec 29, 2023 at 08:32 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `assignment_assignment`
+-- Table structure for table `assignment_assignment`
 --
 
 CREATE TABLE `assignment_assignment` (
@@ -37,7 +37,7 @@ CREATE TABLE `assignment_assignment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `assignment_assignment`
+-- Dumping data for table `assignment_assignment`
 --
 
 INSERT INTO `assignment_assignment` (`id`, `title`, `content`, `points`, `due`, `user_id`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `assignment_assignment` (`id`, `title`, `content`, `points`, `due`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `assignment_assignmentfilecontent`
+-- Table structure for table `assignment_assignmentfilecontent`
 --
 
 CREATE TABLE `assignment_assignmentfilecontent` (
@@ -57,7 +57,7 @@ CREATE TABLE `assignment_assignmentfilecontent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `assignment_assignmentfilecontent`
+-- Dumping data for table `assignment_assignmentfilecontent`
 --
 
 INSERT INTO `assignment_assignmentfilecontent` (`id`, `file`, `user_id`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `assignment_assignmentfilecontent` (`id`, `file`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `assignment_assignment_files`
+-- Table structure for table `assignment_assignment_files`
 --
 
 CREATE TABLE `assignment_assignment_files` (
@@ -77,7 +77,7 @@ CREATE TABLE `assignment_assignment_files` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `assignment_assignment_files`
+-- Dumping data for table `assignment_assignment_files`
 --
 
 INSERT INTO `assignment_assignment_files` (`id`, `assignment_id`, `assignmentfilecontent_id`) VALUES
@@ -86,7 +86,7 @@ INSERT INTO `assignment_assignment_files` (`id`, `assignment_id`, `assignmentfil
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `assignment_submission`
+-- Table structure for table `assignment_submission`
 --
 
 CREATE TABLE `assignment_submission` (
@@ -99,7 +99,7 @@ CREATE TABLE `assignment_submission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `assignment_submission`
+-- Dumping data for table `assignment_submission`
 --
 
 INSERT INTO `assignment_submission` (`id`, `file`, `comment`, `date`, `assignment_id`, `user_id`) VALUES
@@ -108,7 +108,7 @@ INSERT INTO `assignment_submission` (`id`, `file`, `comment`, `date`, `assignmen
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `authy_profile`
+-- Table structure for table `authy_profile`
 --
 
 CREATE TABLE `authy_profile` (
@@ -123,7 +123,7 @@ CREATE TABLE `authy_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `authy_profile`
+-- Dumping data for table `authy_profile`
 --
 
 INSERT INTO `authy_profile` (`id`, `location`, `url`, `profile_info`, `created`, `picture`, `banner`, `user_id`) VALUES
@@ -134,7 +134,7 @@ INSERT INTO `authy_profile` (`id`, `location`, `url`, `profile_info`, `created`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_group`
+-- Table structure for table `auth_group`
 --
 
 CREATE TABLE `auth_group` (
@@ -145,7 +145,7 @@ CREATE TABLE `auth_group` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_group_permissions`
+-- Table structure for table `auth_group_permissions`
 --
 
 CREATE TABLE `auth_group_permissions` (
@@ -157,7 +157,7 @@ CREATE TABLE `auth_group_permissions` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_permission`
+-- Table structure for table `auth_permission`
 --
 
 CREATE TABLE `auth_permission` (
@@ -168,7 +168,7 @@ CREATE TABLE `auth_permission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `auth_permission`
+-- Dumping data for table `auth_permission`
 --
 
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
@@ -235,12 +235,24 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (61, 'Can add submission', 16, 'add_submission'),
 (62, 'Can change submission', 16, 'change_submission'),
 (63, 'Can delete submission', 16, 'delete_submission'),
-(64, 'Can view submission', 16, 'view_submission');
+(64, 'Can view submission', 16, 'view_submission'),
+(65, 'Can add question', 17, 'add_question'),
+(66, 'Can change question', 17, 'change_question'),
+(67, 'Can delete question', 17, 'delete_question'),
+(68, 'Can view question', 17, 'view_question'),
+(69, 'Can add votes', 18, 'add_votes'),
+(70, 'Can change votes', 18, 'change_votes'),
+(71, 'Can delete votes', 18, 'delete_votes'),
+(72, 'Can view votes', 18, 'view_votes'),
+(73, 'Can add answer', 19, 'add_answer'),
+(74, 'Can change answer', 19, 'change_answer'),
+(75, 'Can delete answer', 19, 'delete_answer'),
+(76, 'Can view answer', 19, 'view_answer');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_user`
+-- Table structure for table `auth_user`
 --
 
 CREATE TABLE `auth_user` (
@@ -258,18 +270,18 @@ CREATE TABLE `auth_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `auth_user`
+-- Dumping data for table `auth_user`
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$600000$F7jKCdr3O7uq3gn9cuzUjd$/1ZyM6SgbNOxBLxfVEkZRvzmycPKRCN6R/MR2O2ZlrM=', '2023-12-23 12:18:22.643820', 1, 'michail', '', '', 'mbl@gmail.com', 1, 1, '2023-12-22 08:03:54.388189'),
+(1, 'pbkdf2_sha256$600000$F7jKCdr3O7uq3gn9cuzUjd$/1ZyM6SgbNOxBLxfVEkZRvzmycPKRCN6R/MR2O2ZlrM=', '2023-12-29 07:14:03.931311', 1, 'michail', '', '', 'mbl@gmail.com', 1, 1, '2023-12-22 08:03:54.388189'),
 (2, 'pbkdf2_sha256$600000$LGJ0wENHvitP6LSFhy0M60$WGQshlGy2YJQwPY7rSaNKH/5hSN5deKvbabcdWvn60c=', '2023-12-23 04:07:10.066357', 0, 'mb', '', '', 'mb@gmail.com', 0, 1, '2023-12-22 08:04:35.167878'),
 (3, 'pbkdf2_sha256$600000$sbS76R9tIwfs4xNZwxFGLn$xB8RmgeeII8AKtgdIXY6UHIx1yDTuGL354sZyPnrP2I=', '2023-12-23 07:41:30.907842', 0, 'dabin', 'dabin', 'nelbon', 'dabin@gmail.com', 0, 1, '2023-12-22 16:57:30.393948');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_user_groups`
+-- Table structure for table `auth_user_groups`
 --
 
 CREATE TABLE `auth_user_groups` (
@@ -281,7 +293,7 @@ CREATE TABLE `auth_user_groups` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_user_user_permissions`
+-- Table structure for table `auth_user_user_permissions`
 --
 
 CREATE TABLE `auth_user_user_permissions` (
@@ -293,7 +305,7 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `classroom_category`
+-- Table structure for table `classroom_category`
 --
 
 CREATE TABLE `classroom_category` (
@@ -304,7 +316,7 @@ CREATE TABLE `classroom_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `classroom_category`
+-- Dumping data for table `classroom_category`
 --
 
 INSERT INTO `classroom_category` (`id`, `title`, `slug`, `icon`) VALUES
@@ -317,7 +329,7 @@ INSERT INTO `classroom_category` (`id`, `title`, `slug`, `icon`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `classroom_course`
+-- Table structure for table `classroom_course`
 --
 
 CREATE TABLE `classroom_course` (
@@ -331,16 +343,19 @@ CREATE TABLE `classroom_course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `classroom_course`
+-- Dumping data for table `classroom_course`
 --
 
 INSERT INTO `classroom_course` (`id`, `picture`, `title`, `description`, `syllabus`, `category_id`, `user_id`) VALUES
-('31e32824cca241409ef55d246f422d9e', 'user_1/file.png', 'Software Engineering', 'Learn software engineering', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed augue a quam viverra condimentum in ac libero. Nullam imperdiet scelerisque fermentum. Donec a sapien at risus tempus molestie at in orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi posuere ex ac elit rutrum porta. Nullam ut convallis tortor, in lacinia felis. Proin sodales nibh eu venenatis fermentum. Nam sit amet odio placerat, commodo dui quis, fermentum velit. Praesent vitae mauris nec arcu consectetur egestas. Fusce id orci vitae arcu rutrum pellentesque.</p>', 2, 1);
+('232fd4f302cc494182eec09ab6d7da8c', 'user_1/download.jpeg', 'Biology', 'Learn Biology', '<p>Lorem ipsum</p>', 1, 1),
+('31e32824cca241409ef55d246f422d9e', 'user_1/file.png', 'Software Engineering', 'Learn software engineering', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed augue a quam viverra condimentum in ac libero. Nullam imperdiet scelerisque fermentum. Donec a sapien at risus tempus molestie at in orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi posuere ex ac elit rutrum porta. Nullam ut convallis tortor, in lacinia felis. Proin sodales nibh eu venenatis fermentum. Nam sit amet odio placerat, commodo dui quis, fermentum velit. Praesent vitae mauris nec arcu consectetur egestas. Fusce id orci vitae arcu rutrum pellentesque.</p>', 2, 1),
+('bba399cf9b8e455e95876c104199700e', 'user_1/download_pAaw2Tq.jpeg', 'Social Science', 'Learn Social Science', '<p>Learn Social Science</p>', 4, 1),
+('e9e4aa51a58a4625af0af0be29970f28', 'user_1/download_duyiXeb.jpeg', 'Law & Constitution', 'Learn Constitution', '<p>Lorem Ipsum</p>', 5, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `classroom_course_enrolled`
+-- Table structure for table `classroom_course_enrolled`
 --
 
 CREATE TABLE `classroom_course_enrolled` (
@@ -350,18 +365,21 @@ CREATE TABLE `classroom_course_enrolled` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `classroom_course_enrolled`
+-- Dumping data for table `classroom_course_enrolled`
 --
 
 INSERT INTO `classroom_course_enrolled` (`id`, `course_id`, `user_id`) VALUES
+(12, '232fd4f302cc494182eec09ab6d7da8c', 2),
 (1, '31e32824cca241409ef55d246f422d9e', 1),
 (5, '31e32824cca241409ef55d246f422d9e', 2),
-(3, '31e32824cca241409ef55d246f422d9e', 3);
+(3, '31e32824cca241409ef55d246f422d9e', 3),
+(14, 'bba399cf9b8e455e95876c104199700e', 3),
+(13, 'e9e4aa51a58a4625af0af0be29970f28', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `classroom_course_modules`
+-- Table structure for table `classroom_course_modules`
 --
 
 CREATE TABLE `classroom_course_modules` (
@@ -371,16 +389,40 @@ CREATE TABLE `classroom_course_modules` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `classroom_course_modules`
+-- Dumping data for table `classroom_course_modules`
 --
 
 INSERT INTO `classroom_course_modules` (`id`, `course_id`, `module_id`) VALUES
-(1, '31e32824cca241409ef55d246f422d9e', 1);
+(2, '232fd4f302cc494182eec09ab6d7da8c', 1),
+(1, '31e32824cca241409ef55d246f422d9e', 1),
+(4, 'bba399cf9b8e455e95876c104199700e', 1),
+(3, 'e9e4aa51a58a4625af0af0be29970f28', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `classroom_grade`
+-- Table structure for table `classroom_course_questions`
+--
+
+CREATE TABLE `classroom_course_questions` (
+  `id` bigint(20) NOT NULL,
+  `course_id` char(32) NOT NULL,
+  `question_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `classroom_course_questions`
+--
+
+INSERT INTO `classroom_course_questions` (`id`, `course_id`, `question_id`) VALUES
+(1, '232fd4f302cc494182eec09ab6d7da8c', 1),
+(3, 'bba399cf9b8e455e95876c104199700e', 1),
+(2, 'e9e4aa51a58a4625af0af0be29970f28', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classroom_grade`
 --
 
 CREATE TABLE `classroom_grade` (
@@ -393,7 +435,7 @@ CREATE TABLE `classroom_grade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `classroom_grade`
+-- Dumping data for table `classroom_grade`
 --
 
 INSERT INTO `classroom_grade` (`id`, `points`, `status`, `course_id`, `graded_by_id`, `submission_id`) VALUES
@@ -402,7 +444,7 @@ INSERT INTO `classroom_grade` (`id`, `points`, `status`, `course_id`, `graded_by
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `django_admin_log`
+-- Table structure for table `django_admin_log`
 --
 
 CREATE TABLE `django_admin_log` (
@@ -417,7 +459,7 @@ CREATE TABLE `django_admin_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `django_admin_log`
+-- Dumping data for table `django_admin_log`
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
@@ -429,12 +471,16 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (6, '2023-12-22 09:00:51.167885', '2', 'Software', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1),
 (7, '2023-12-22 09:01:39.064799', '1', 'Science', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1),
 (8, '2023-12-22 09:02:02.367574', '3', 'Botanic', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1),
-(9, '2023-12-22 16:12:38.637411', '3', 'Botanic', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1);
+(9, '2023-12-22 16:12:38.637411', '3', 'Botanic', 2, '[{\"changed\": {\"fields\": [\"Icon\"]}}]', 9, 1),
+(10, '2023-12-29 07:28:12.757162', '1', 'Test', 1, '[{\"added\": {}}]', 17, 1),
+(11, '2023-12-29 07:28:25.016046', '232fd4f3-02cc-4941-82ee-c09ab6d7da8c', 'Biology', 1, '[{\"added\": {}}]', 8, 1),
+(12, '2023-12-29 07:30:14.462341', 'e9e4aa51-a58a-4625-af0a-f0be29970f28', 'Law & Constitution', 1, '[{\"added\": {}}]', 8, 1),
+(13, '2023-12-29 07:31:32.963583', 'bba399cf-9b8e-455e-9587-6c104199700e', 'Social Science', 1, '[{\"added\": {}}]', 8, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `django_content_type`
+-- Table structure for table `django_content_type`
 --
 
 CREATE TABLE `django_content_type` (
@@ -444,7 +490,7 @@ CREATE TABLE `django_content_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `django_content_type`
+-- Dumping data for table `django_content_type`
 --
 
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
@@ -463,12 +509,15 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (10, 'module', 'module'),
 (11, 'page', 'page'),
 (12, 'page', 'postfilecontent'),
+(19, 'question', 'answer'),
+(17, 'question', 'question'),
+(18, 'question', 'votes'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `django_migrations`
+-- Table structure for table `django_migrations`
 --
 
 CREATE TABLE `django_migrations` (
@@ -479,7 +528,7 @@ CREATE TABLE `django_migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `django_migrations`
+-- Dumping data for table `django_migrations`
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
@@ -514,12 +563,16 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (29, 'module', '0003_module_pages', '2023-12-23 06:59:55.806616'),
 (30, 'assignment', '0001_initial', '2023-12-23 10:45:59.771362'),
 (31, 'classroom', '0003_grade', '2023-12-23 10:45:59.858879'),
-(32, 'module', '0004_module_assignments', '2023-12-23 10:45:59.932394');
+(32, 'module', '0004_module_assignments', '2023-12-23 10:45:59.932394'),
+(33, 'question', '0001_initial', '2023-12-29 06:53:05.589257'),
+(34, 'classroom', '0004_course_questions', '2023-12-29 06:53:07.266022'),
+(35, 'classroom', '0005_alter_course_enrolled_alter_course_modules_and_more', '2023-12-29 07:13:40.776162'),
+(36, 'classroom', '0006_alter_course_enrolled_alter_course_modules_and_more', '2023-12-29 07:14:50.579861');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `django_session`
+-- Table structure for table `django_session`
 --
 
 CREATE TABLE `django_session` (
@@ -529,18 +582,20 @@ CREATE TABLE `django_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `django_session`
+-- Dumping data for table `django_session`
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('b3zbbu6ujh0z9tnk1n1wbula9bultgmd', '.eJxVjDsOwjAQBe_iGlkbf7OU9JzB8nptHECOFCcV4u4QKQW0b2beS4S4rTVsPS9hYnEWgzj9bhTTI7cd8D222yzT3NZlIrkr8qBdXmfOz8vh_h3U2Ou3tpbKiJyVZlLKMg6kXQRflI4JM2gDNKJmD94jZVDoyKDxqUBxCkC8P9vtN0M:1rGtJN:DfvdeMdv1opg4T6AjkBfUkO7ev5RJVdHGOeh9FLlj0s', '2024-01-06 04:08:29.499509'),
 ('ce98klytdyciv7pyqs37qims1tt0o540', '.eJxVjMsOwiAQAP-FsyEsizw8evcbyLJQqRqalPZk_HdD0oNeZybzFpH2rca9lzXOWVyEFqdfloifpQ2RH9Tui-Slbeuc5EjkYbu8Lbm8rkf7N6jU69hqlUrQxeaECOg9cwI0igNko9mdlQuOvAECp5IPE5SJDVq0li2QFp8vyF03BA:1rGeIg:ea58GrT9Eiv0byuhpWYk8R-4zJjtSXs35iYCSoLrCkA', '2024-01-05 12:06:46.454183'),
-('qiy8l5fveep6bclmn8aqfe6v8dbmko5u', '.eJxVjDsOwjAQBe_iGlkbf7OU9JzB8nptHECOFCcV4u4QKQW0b2beS4S4rTVsPS9hYnEWgzj9bhTTI7cd8D222yzT3NZlIrkr8qBdXmfOz8vh_h3U2Ou3tpbKiJyVZlLKMg6kXQRflI4JM2gDNKJmD94jZVDoyKDxqUBxCkC8P9vtN0M:1rH0xS:-GHIDH8oqx54GDGPP4OO9jMOFanLFwxtHmVzAF1Ngik', '2024-01-06 12:18:22.648816');
+('jywgqtc7izd2o87gc92bmlzhhv1dlk9k', '.eJxVjDsOwjAQBe_iGlkbf7OU9JzB8nptHECOFCcV4u4QKQW0b2beS4S4rTVsPS9hYnEWgzj9bhTTI7cd8D222yzT3NZlIrkr8qBdXmfOz8vh_h3U2Ou3tpbKiJyVZlLKMg6kXQRflI4JM2gDNKJmD94jZVDoyKDxqUBxCkC8P9vtN0M:1rJ74F:pZ7bqHtB9LFDInQN6GkQj4edaylX2y7ZKCOCkJ4VoTQ', '2024-01-12 07:14:03.960242'),
+('qiy8l5fveep6bclmn8aqfe6v8dbmko5u', '.eJxVjDsOwjAQBe_iGlkbf7OU9JzB8nptHECOFCcV4u4QKQW0b2beS4S4rTVsPS9hYnEWgzj9bhTTI7cd8D222yzT3NZlIrkr8qBdXmfOz8vh_h3U2Ou3tpbKiJyVZlLKMg6kXQRflI4JM2gDNKJmD94jZVDoyKDxqUBxCkC8P9vtN0M:1rH0xS:-GHIDH8oqx54GDGPP4OO9jMOFanLFwxtHmVzAF1Ngik', '2024-01-06 12:18:22.648816'),
+('v8otm0rmgn41tnmdfju0w5jrh450zss0', '.eJxVjDsOwjAQBe_iGlkbf7OU9JzB8nptHECOFCcV4u4QKQW0b2beS4S4rTVsPS9hYnEWgzj9bhTTI7cd8D222yzT3NZlIrkr8qBdXmfOz8vh_h3U2Ou3tpbKiJyVZlLKMg6kXQRflI4JM2gDNKJmD94jZVDoyKDxqUBxCkC8P9vtN0M:1rJ6gy:Q9YUFhcK28z4F5q4RPGHaaVxBZ8xA3CVuA7K_230_bU', '2024-01-12 06:50:00.303380');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `module_module`
+-- Table structure for table `module_module`
 --
 
 CREATE TABLE `module_module` (
@@ -551,16 +606,16 @@ CREATE TABLE `module_module` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `module_module`
+-- Dumping data for table `module_module`
 --
 
 INSERT INTO `module_module` (`id`, `title`, `hours`, `user_id`) VALUES
-(1, 'bimbimbambam', 2, 1);
+(1, 'Module 1 - Introduction', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `module_module_assignments`
+-- Table structure for table `module_module_assignments`
 --
 
 CREATE TABLE `module_module_assignments` (
@@ -570,7 +625,7 @@ CREATE TABLE `module_module_assignments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `module_module_assignments`
+-- Dumping data for table `module_module_assignments`
 --
 
 INSERT INTO `module_module_assignments` (`id`, `module_id`, `assignment_id`) VALUES
@@ -579,7 +634,7 @@ INSERT INTO `module_module_assignments` (`id`, `module_id`, `assignment_id`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `module_module_pages`
+-- Table structure for table `module_module_pages`
 --
 
 CREATE TABLE `module_module_pages` (
@@ -589,7 +644,7 @@ CREATE TABLE `module_module_pages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `module_module_pages`
+-- Dumping data for table `module_module_pages`
 --
 
 INSERT INTO `module_module_pages` (`id`, `module_id`, `page_id`) VALUES
@@ -598,7 +653,7 @@ INSERT INTO `module_module_pages` (`id`, `module_id`, `page_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `page_page`
+-- Table structure for table `page_page`
 --
 
 CREATE TABLE `page_page` (
@@ -609,7 +664,7 @@ CREATE TABLE `page_page` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `page_page`
+-- Dumping data for table `page_page`
 --
 
 INSERT INTO `page_page` (`id`, `title`, `content`, `user_id`) VALUES
@@ -618,7 +673,7 @@ INSERT INTO `page_page` (`id`, `title`, `content`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `page_page_files`
+-- Table structure for table `page_page_files`
 --
 
 CREATE TABLE `page_page_files` (
@@ -628,7 +683,7 @@ CREATE TABLE `page_page_files` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `page_page_files`
+-- Dumping data for table `page_page_files`
 --
 
 INSERT INTO `page_page_files` (`id`, `page_id`, `postfilecontent_id`) VALUES
@@ -637,7 +692,7 @@ INSERT INTO `page_page_files` (`id`, `page_id`, `postfilecontent_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `page_postfilecontent`
+-- Table structure for table `page_postfilecontent`
 --
 
 CREATE TABLE `page_postfilecontent` (
@@ -648,32 +703,86 @@ CREATE TABLE `page_postfilecontent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `page_postfilecontent`
+-- Dumping data for table `page_postfilecontent`
 --
 
 INSERT INTO `page_postfilecontent` (`id`, `file`, `posted`, `user_id`) VALUES
 (1, 'user_1/Academic_Calendar_-_Even_2023-2024_IS1_2.pdf', '2023-12-23 07:32:39.457442', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_answer`
+--
+
+CREATE TABLE `question_answer` (
+  `id` bigint(20) NOT NULL,
+  `body` longtext NOT NULL,
+  `created_date` datetime(6) NOT NULL,
+  `updated_date` datetime(6) NOT NULL,
+  `votes` int(11) NOT NULL,
+  `is_accepted` tinyint(1) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_question`
+--
+
+CREATE TABLE `question_question` (
+  `id` bigint(20) NOT NULL,
+  `title` varchar(300) NOT NULL,
+  `body` longtext NOT NULL,
+  `created_date` datetime(6) NOT NULL,
+  `updated_date` datetime(6) NOT NULL,
+  `has_accepted_answer` tinyint(1) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `question_question`
+--
+
+INSERT INTO `question_question` (`id`, `title`, `body`, `created_date`, `updated_date`, `has_accepted_answer`, `user_id`) VALUES
+(1, 'Test', '<p>Lorem Ipsum</p>', '2023-12-29 07:28:12.745154', '2023-12-29 07:28:12.745154', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_votes`
+--
+
+CREATE TABLE `question_votes` (
+  `id` bigint(20) NOT NULL,
+  `vote` varchar(1) NOT NULL,
+  `date` datetime(6) NOT NULL,
+  `answer_id` bigint(20) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `assignment_assignment`
+-- Indexes for table `assignment_assignment`
 --
 ALTER TABLE `assignment_assignment`
   ADD PRIMARY KEY (`id`),
   ADD KEY `assignment_assignment_user_id_b66c9f0b_fk_auth_user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `assignment_assignmentfilecontent`
+-- Indexes for table `assignment_assignmentfilecontent`
 --
 ALTER TABLE `assignment_assignmentfilecontent`
   ADD PRIMARY KEY (`id`),
   ADD KEY `assignment_assignmen_user_id_343205bd_fk_auth_user` (`user_id`);
 
 --
--- Indeks untuk tabel `assignment_assignment_files`
+-- Indexes for table `assignment_assignment_files`
 --
 ALTER TABLE `assignment_assignment_files`
   ADD PRIMARY KEY (`id`),
@@ -681,7 +790,7 @@ ALTER TABLE `assignment_assignment_files`
   ADD KEY `assignment_assignmen_assignmentfileconten_37774b92_fk_assignmen` (`assignmentfilecontent_id`);
 
 --
--- Indeks untuk tabel `assignment_submission`
+-- Indexes for table `assignment_submission`
 --
 ALTER TABLE `assignment_submission`
   ADD PRIMARY KEY (`id`),
@@ -689,21 +798,21 @@ ALTER TABLE `assignment_submission`
   ADD KEY `assignment_submission_user_id_6097f150_fk_auth_user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `authy_profile`
+-- Indexes for table `authy_profile`
 --
 ALTER TABLE `authy_profile`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `auth_group`
+-- Indexes for table `auth_group`
 --
 ALTER TABLE `auth_group`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indeks untuk tabel `auth_group_permissions`
+-- Indexes for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   ADD PRIMARY KEY (`id`),
@@ -711,21 +820,21 @@ ALTER TABLE `auth_group_permissions`
   ADD KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`);
 
 --
--- Indeks untuk tabel `auth_permission`
+-- Indexes for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`);
 
 --
--- Indeks untuk tabel `auth_user`
+-- Indexes for table `auth_user`
 --
 ALTER TABLE `auth_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indeks untuk tabel `auth_user_groups`
+-- Indexes for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   ADD PRIMARY KEY (`id`),
@@ -733,7 +842,7 @@ ALTER TABLE `auth_user_groups`
   ADD KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`);
 
 --
--- Indeks untuk tabel `auth_user_user_permissions`
+-- Indexes for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   ADD PRIMARY KEY (`id`),
@@ -741,14 +850,14 @@ ALTER TABLE `auth_user_user_permissions`
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
 
 --
--- Indeks untuk tabel `classroom_category`
+-- Indexes for table `classroom_category`
 --
 ALTER TABLE `classroom_category`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `slug` (`slug`);
 
 --
--- Indeks untuk tabel `classroom_course`
+-- Indexes for table `classroom_course`
 --
 ALTER TABLE `classroom_course`
   ADD PRIMARY KEY (`id`),
@@ -756,7 +865,7 @@ ALTER TABLE `classroom_course`
   ADD KEY `classroom_course_category_id_50e7f834_fk_classroom_category_id` (`category_id`);
 
 --
--- Indeks untuk tabel `classroom_course_enrolled`
+-- Indexes for table `classroom_course_enrolled`
 --
 ALTER TABLE `classroom_course_enrolled`
   ADD PRIMARY KEY (`id`),
@@ -764,7 +873,7 @@ ALTER TABLE `classroom_course_enrolled`
   ADD KEY `classroom_course_enrolled_user_id_c8e0f9a2_fk_auth_user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `classroom_course_modules`
+-- Indexes for table `classroom_course_modules`
 --
 ALTER TABLE `classroom_course_modules`
   ADD PRIMARY KEY (`id`),
@@ -772,7 +881,15 @@ ALTER TABLE `classroom_course_modules`
   ADD KEY `classroom_course_modules_module_id_0f5129ef_fk_module_module_id` (`module_id`);
 
 --
--- Indeks untuk tabel `classroom_grade`
+-- Indexes for table `classroom_course_questions`
+--
+ALTER TABLE `classroom_course_questions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `classroom_course_questions_course_id_question_id_a9b0f377_uniq` (`course_id`,`question_id`),
+  ADD KEY `classroom_course_que_question_id_a99867cc_fk_question_` (`question_id`);
+
+--
+-- Indexes for table `classroom_grade`
 --
 ALTER TABLE `classroom_grade`
   ADD PRIMARY KEY (`id`),
@@ -781,7 +898,7 @@ ALTER TABLE `classroom_grade`
   ADD KEY `classroom_grade_submission_id_7dc90528_fk_assignmen` (`submission_id`);
 
 --
--- Indeks untuk tabel `django_admin_log`
+-- Indexes for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   ADD PRIMARY KEY (`id`),
@@ -789,34 +906,34 @@ ALTER TABLE `django_admin_log`
   ADD KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `django_content_type`
+-- Indexes for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`);
 
 --
--- Indeks untuk tabel `django_migrations`
+-- Indexes for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `django_session`
+-- Indexes for table `django_session`
 --
 ALTER TABLE `django_session`
   ADD PRIMARY KEY (`session_key`),
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
--- Indeks untuk tabel `module_module`
+-- Indexes for table `module_module`
 --
 ALTER TABLE `module_module`
   ADD PRIMARY KEY (`id`),
   ADD KEY `module_module_user_id_23441d86_fk_auth_user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `module_module_assignments`
+-- Indexes for table `module_module_assignments`
 --
 ALTER TABLE `module_module_assignments`
   ADD PRIMARY KEY (`id`),
@@ -824,7 +941,7 @@ ALTER TABLE `module_module_assignments`
   ADD KEY `module_module_assign_assignment_id_d64463cb_fk_assignmen` (`assignment_id`);
 
 --
--- Indeks untuk tabel `module_module_pages`
+-- Indexes for table `module_module_pages`
 --
 ALTER TABLE `module_module_pages`
   ADD PRIMARY KEY (`id`),
@@ -832,14 +949,14 @@ ALTER TABLE `module_module_pages`
   ADD KEY `module_module_pages_page_id_c5236a73_fk_page_page_id` (`page_id`);
 
 --
--- Indeks untuk tabel `page_page`
+-- Indexes for table `page_page`
 --
 ALTER TABLE `page_page`
   ADD PRIMARY KEY (`id`),
   ADD KEY `page_page_user_id_3e90c4d5_fk_auth_user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `page_page_files`
+-- Indexes for table `page_page_files`
 --
 ALTER TABLE `page_page_files`
   ADD PRIMARY KEY (`id`),
@@ -847,246 +964,300 @@ ALTER TABLE `page_page_files`
   ADD KEY `page_page_files_postfilecontent_id_b1535502_fk_page_post` (`postfilecontent_id`);
 
 --
--- Indeks untuk tabel `page_postfilecontent`
+-- Indexes for table `page_postfilecontent`
 --
 ALTER TABLE `page_postfilecontent`
   ADD PRIMARY KEY (`id`),
   ADD KEY `page_postfilecontent_user_id_40e839bb_fk_auth_user_id` (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `question_answer`
+--
+ALTER TABLE `question_answer`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_answer_question_id_2220065b_fk_question_question_id` (`question_id`),
+  ADD KEY `question_answer_user_id_1e93b02f_fk_auth_user_id` (`user_id`);
+
+--
+-- Indexes for table `question_question`
+--
+ALTER TABLE `question_question`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_question_user_id_6ae5c0ef_fk_auth_user_id` (`user_id`);
+
+--
+-- Indexes for table `question_votes`
+--
+ALTER TABLE `question_votes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_votes_answer_id_037cb082_fk_question_answer_id` (`answer_id`),
+  ADD KEY `question_votes_user_id_63d4efee_fk_auth_user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `assignment_assignment`
+-- AUTO_INCREMENT for table `assignment_assignment`
 --
 ALTER TABLE `assignment_assignment`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `assignment_assignmentfilecontent`
+-- AUTO_INCREMENT for table `assignment_assignmentfilecontent`
 --
 ALTER TABLE `assignment_assignmentfilecontent`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `assignment_assignment_files`
+-- AUTO_INCREMENT for table `assignment_assignment_files`
 --
 ALTER TABLE `assignment_assignment_files`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `assignment_submission`
+-- AUTO_INCREMENT for table `assignment_submission`
 --
 ALTER TABLE `assignment_submission`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `authy_profile`
+-- AUTO_INCREMENT for table `authy_profile`
 --
 ALTER TABLE `authy_profile`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_group`
+-- AUTO_INCREMENT for table `auth_group`
 --
 ALTER TABLE `auth_group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_group_permissions`
+-- AUTO_INCREMENT for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_permission`
+-- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_user`
+-- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_user_groups`
+-- AUTO_INCREMENT for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_user_user_permissions`
+-- AUTO_INCREMENT for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `classroom_category`
+-- AUTO_INCREMENT for table `classroom_category`
 --
 ALTER TABLE `classroom_category`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `classroom_course_enrolled`
+-- AUTO_INCREMENT for table `classroom_course_enrolled`
 --
 ALTER TABLE `classroom_course_enrolled`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `classroom_course_modules`
+-- AUTO_INCREMENT for table `classroom_course_modules`
 --
 ALTER TABLE `classroom_course_modules`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `classroom_grade`
+-- AUTO_INCREMENT for table `classroom_course_questions`
+--
+ALTER TABLE `classroom_course_questions`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `classroom_grade`
 --
 ALTER TABLE `classroom_grade`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `django_admin_log`
+-- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `django_content_type`
+-- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `django_migrations`
+-- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT untuk tabel `module_module`
+-- AUTO_INCREMENT for table `module_module`
 --
 ALTER TABLE `module_module`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `module_module_assignments`
+-- AUTO_INCREMENT for table `module_module_assignments`
 --
 ALTER TABLE `module_module_assignments`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `module_module_pages`
+-- AUTO_INCREMENT for table `module_module_pages`
 --
 ALTER TABLE `module_module_pages`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `page_page`
+-- AUTO_INCREMENT for table `page_page`
 --
 ALTER TABLE `page_page`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `page_page_files`
+-- AUTO_INCREMENT for table `page_page_files`
 --
 ALTER TABLE `page_page_files`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `page_postfilecontent`
+-- AUTO_INCREMENT for table `page_postfilecontent`
 --
 ALTER TABLE `page_postfilecontent`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT for table `question_answer`
+--
+ALTER TABLE `question_answer`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `question_question`
+--
+ALTER TABLE `question_question`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `question_votes`
+--
+ALTER TABLE `question_votes`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `assignment_assignment`
+-- Constraints for table `assignment_assignment`
 --
 ALTER TABLE `assignment_assignment`
   ADD CONSTRAINT `assignment_assignment_user_id_b66c9f0b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `assignment_assignmentfilecontent`
+-- Constraints for table `assignment_assignmentfilecontent`
 --
 ALTER TABLE `assignment_assignmentfilecontent`
   ADD CONSTRAINT `assignment_assignmen_user_id_343205bd_fk_auth_user` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `assignment_assignment_files`
+-- Constraints for table `assignment_assignment_files`
 --
 ALTER TABLE `assignment_assignment_files`
   ADD CONSTRAINT `assignment_assignmen_assignment_id_2bb75ece_fk_assignmen` FOREIGN KEY (`assignment_id`) REFERENCES `assignment_assignment` (`id`),
   ADD CONSTRAINT `assignment_assignmen_assignmentfileconten_37774b92_fk_assignmen` FOREIGN KEY (`assignmentfilecontent_id`) REFERENCES `assignment_assignmentfilecontent` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `assignment_submission`
+-- Constraints for table `assignment_submission`
 --
 ALTER TABLE `assignment_submission`
   ADD CONSTRAINT `assignment_submissio_assignment_id_607c0502_fk_assignmen` FOREIGN KEY (`assignment_id`) REFERENCES `assignment_assignment` (`id`),
   ADD CONSTRAINT `assignment_submission_user_id_6097f150_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `authy_profile`
+-- Constraints for table `authy_profile`
 --
 ALTER TABLE `authy_profile`
   ADD CONSTRAINT `authy_profile_user_id_200e8c9b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `auth_group_permissions`
+-- Constraints for table `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
   ADD CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `auth_permission`
+-- Constraints for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
   ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `auth_user_groups`
+-- Constraints for table `auth_user_groups`
 --
 ALTER TABLE `auth_user_groups`
   ADD CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
   ADD CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `auth_user_user_permissions`
+-- Constraints for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
   ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `classroom_course`
+-- Constraints for table `classroom_course`
 --
 ALTER TABLE `classroom_course`
   ADD CONSTRAINT `classroom_course_category_id_50e7f834_fk_classroom_category_id` FOREIGN KEY (`category_id`) REFERENCES `classroom_category` (`id`),
   ADD CONSTRAINT `classroom_course_user_id_a05d9798_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `classroom_course_enrolled`
+-- Constraints for table `classroom_course_enrolled`
 --
 ALTER TABLE `classroom_course_enrolled`
   ADD CONSTRAINT `classroom_course_enr_course_id_4a0d5d7c_fk_classroom` FOREIGN KEY (`course_id`) REFERENCES `classroom_course` (`id`),
   ADD CONSTRAINT `classroom_course_enrolled_user_id_c8e0f9a2_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `classroom_course_modules`
+-- Constraints for table `classroom_course_modules`
 --
 ALTER TABLE `classroom_course_modules`
   ADD CONSTRAINT `classroom_course_mod_course_id_28140d0c_fk_classroom` FOREIGN KEY (`course_id`) REFERENCES `classroom_course` (`id`),
   ADD CONSTRAINT `classroom_course_modules_module_id_0f5129ef_fk_module_module_id` FOREIGN KEY (`module_id`) REFERENCES `module_module` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `classroom_grade`
+-- Constraints for table `classroom_course_questions`
+--
+ALTER TABLE `classroom_course_questions`
+  ADD CONSTRAINT `classroom_course_que_course_id_25a1ec3e_fk_classroom` FOREIGN KEY (`course_id`) REFERENCES `classroom_course` (`id`),
+  ADD CONSTRAINT `classroom_course_que_question_id_a99867cc_fk_question_` FOREIGN KEY (`question_id`) REFERENCES `question_question` (`id`);
+
+--
+-- Constraints for table `classroom_grade`
 --
 ALTER TABLE `classroom_grade`
   ADD CONSTRAINT `classroom_grade_course_id_5c750493_fk_classroom_course_id` FOREIGN KEY (`course_id`) REFERENCES `classroom_course` (`id`),
@@ -1094,50 +1265,70 @@ ALTER TABLE `classroom_grade`
   ADD CONSTRAINT `classroom_grade_submission_id_7dc90528_fk_assignmen` FOREIGN KEY (`submission_id`) REFERENCES `assignment_submission` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `django_admin_log`
+-- Constraints for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `module_module`
+-- Constraints for table `module_module`
 --
 ALTER TABLE `module_module`
   ADD CONSTRAINT `module_module_user_id_23441d86_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `module_module_assignments`
+-- Constraints for table `module_module_assignments`
 --
 ALTER TABLE `module_module_assignments`
   ADD CONSTRAINT `module_module_assign_assignment_id_d64463cb_fk_assignmen` FOREIGN KEY (`assignment_id`) REFERENCES `assignment_assignment` (`id`),
   ADD CONSTRAINT `module_module_assignments_module_id_c2dbfc8c_fk_module_module_id` FOREIGN KEY (`module_id`) REFERENCES `module_module` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `module_module_pages`
+-- Constraints for table `module_module_pages`
 --
 ALTER TABLE `module_module_pages`
   ADD CONSTRAINT `module_module_pages_module_id_876fc287_fk_module_module_id` FOREIGN KEY (`module_id`) REFERENCES `module_module` (`id`),
   ADD CONSTRAINT `module_module_pages_page_id_c5236a73_fk_page_page_id` FOREIGN KEY (`page_id`) REFERENCES `page_page` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `page_page`
+-- Constraints for table `page_page`
 --
 ALTER TABLE `page_page`
   ADD CONSTRAINT `page_page_user_id_3e90c4d5_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `page_page_files`
+-- Constraints for table `page_page_files`
 --
 ALTER TABLE `page_page_files`
   ADD CONSTRAINT `page_page_files_page_id_ef4f7bd4_fk_page_page_id` FOREIGN KEY (`page_id`) REFERENCES `page_page` (`id`),
   ADD CONSTRAINT `page_page_files_postfilecontent_id_b1535502_fk_page_post` FOREIGN KEY (`postfilecontent_id`) REFERENCES `page_postfilecontent` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `page_postfilecontent`
+-- Constraints for table `page_postfilecontent`
 --
 ALTER TABLE `page_postfilecontent`
   ADD CONSTRAINT `page_postfilecontent_user_id_40e839bb_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `question_answer`
+--
+ALTER TABLE `question_answer`
+  ADD CONSTRAINT `question_answer_question_id_2220065b_fk_question_question_id` FOREIGN KEY (`question_id`) REFERENCES `question_question` (`id`),
+  ADD CONSTRAINT `question_answer_user_id_1e93b02f_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `question_question`
+--
+ALTER TABLE `question_question`
+  ADD CONSTRAINT `question_question_user_id_6ae5c0ef_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+
+--
+-- Constraints for table `question_votes`
+--
+ALTER TABLE `question_votes`
+  ADD CONSTRAINT `question_votes_answer_id_037cb082_fk_question_answer_id` FOREIGN KEY (`answer_id`) REFERENCES `question_answer` (`id`),
+  ADD CONSTRAINT `question_votes_user_id_63d4efee_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
